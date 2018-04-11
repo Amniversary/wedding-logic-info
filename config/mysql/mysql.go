@@ -37,6 +37,6 @@ func openDb(c *config.Config) {
 
 func initTable() {
 	db.AutoMigrate(
-
+		new(Process),
 	)
 }
