@@ -4,7 +4,6 @@ type GetProcessList struct {
 	WeddingId int64 `json:"weddingId"`
 }
 
-
 type ProcessRes struct {
 	ID        int64  `json:"id"`
 	Time      string `json:"time"`
@@ -14,5 +13,9 @@ type ProcessRes struct {
 }
 
 type DelProcess struct {
+	Id int64 `json:"id"`
+}
+
+type GetProcessInfo struct {
 	Id int64 `json:"id"`
 }

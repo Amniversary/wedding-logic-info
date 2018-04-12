@@ -61,6 +61,7 @@ func (s *Server) initMap() {
 		"upProcess":      s.UpProcess,
 		"getProcessList": s.GetProcessList,
 		"delProcess":     s.DelProcess,
+		"getProcessInfo": s.GetProcessInfo,
 	}
 	s.methodMap = MethodMap
 }

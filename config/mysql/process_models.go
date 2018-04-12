@@ -44,3 +44,12 @@ func DelProcess(id int64) bool {
 	}
 	return true
 }
+
+func GetProcessInfo(id int64) (*Process, bool) {
+	process := &Process{}
+	if err := db.Where("id = ?", id).First(&process).Error; err != nil {
+		log.Printf("getProcessInfo query err: [%v]", err)
+		return nil, false
+	}
+	return process, true
+}

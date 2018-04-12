@@ -106,3 +106,25 @@ func (s *Server) DelProcess(w http.ResponseWriter, r *http.Request) {
 	}
 	Response.Code = config.RESPONSE_OK
 }
+/**
+	TODO: 获取流程详情
+ */
+func (s *Server) GetProcessInfo(w http.ResponseWriter, r *http.Request) {
+	Response := &config.Response{Code: config.RESPONSE_ERROR}
+	defer func() {
+		EchoJson(w, http.StatusOK, Response)
+	}()
+	req := &config.GetProcessInfo{}
+	if err := json.NewDecoder(r.Body).Decode(req); err != nil {
+		log.Printf("getProcessInfo json decode err: [%v]", err)
+		Response.Msg = config.ERROR_MSG
+		return
+	}
+	info, ok := mysql.GetProcessInfo(req.Id)
+	if !ok {
+		Response.Msg = config.ERROR_MSG
+		return
+	}
+	Response.Data = info
+	Response.Code = config.RESPONSE_OK
+}
