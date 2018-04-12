@@ -57,8 +57,10 @@ func EchoJson(w http.ResponseWriter, status int, data interface{}) error {
 
 func (s *Server) initMap() {
 	var MethodMap = map[string]MethodFunc{
-		"newProcess": s.NewProcess,
-		"upProcess":  s.UpProcess,
+		"newProcess":     s.NewProcess,
+		"upProcess":      s.UpProcess,
+		"getProcessList": s.GetProcessList,
+		"delProcess":     s.DelProcess,
 	}
 	s.methodMap = MethodMap
 }
